@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "8369431337",
+    "project_id": "projetointegradorvpe",
+    "storage_bucket": "projetointegradorvpe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8369431337:android:7c8a6b09736ab81fb28d38",
+        "android_client_info": {
+          "package_name": "br.com.projeto_pi_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8369431337-70n6rt07epb5h8cmr7fecpifdemcq447.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArGZvpldk0G85oaaIiEIyQLQ0th-F7QPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8369431337-70n6rt07epb5h8cmr7fecpifdemcq447.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
