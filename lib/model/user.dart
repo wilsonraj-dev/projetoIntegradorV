@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:projeto_pi_flutter/model/address.dart';
 
 class User{
 
@@ -8,6 +9,9 @@ class User{
     id = document.documentID;
     nome = document.data['name'] as String;
     email = document.data['email'] as String;
+    if(document.data.containsKey('address')){
+      address = Address.fromMap(document.data['address'] as Map<String, dynamic>);
+    }
   }
 
   String id;
@@ -18,6 +22,7 @@ class User{
 
   bool admin = false;
 
+  Address address;
 
   //Salvando dados do usuário
   DocumentReference get firestoreRef =>
@@ -34,6 +39,13 @@ class User{
     return {
       'name': nome,
       'email': email,
+      if(address != null)
+        'address': address.toMap(),
     };
+  }
+
+  void setAddress(Address address){
+    this.address = address;
+    saveData();
   }
 }

@@ -53,6 +53,5 @@ class ProductManager extends ChangeNotifier{
     } catch (e){
       return null;
     }
-
   }
 }
