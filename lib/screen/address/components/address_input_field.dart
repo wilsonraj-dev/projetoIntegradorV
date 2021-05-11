@@ -125,11 +125,13 @@ class AddressInputField extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 8,),
+
           if(cartManager.loading)
             LinearProgressIndicator(
               valueColor: AlwaysStoppedAnimation(Colors.green),
               backgroundColor: Colors.transparent,
             ),
+
           RaisedButton(
             color: Colors.green,
             textColor: Colors.white,

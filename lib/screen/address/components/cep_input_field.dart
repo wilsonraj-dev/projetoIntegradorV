@@ -22,6 +22,7 @@ class _CepInputFieldState extends State<CepInputField> {
   @override
   Widget build(BuildContext context) {
     final cartManager = context.watch<CartManager>();
+
     if(widget.address.zipCode == null)
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -49,15 +50,11 @@ class _CepInputFieldState extends State<CepInputField> {
               return null;
             },
           ),
-
-
           if(cartManager.loading)
             LinearProgressIndicator(
               valueColor: AlwaysStoppedAnimation(Colors.green),
               backgroundColor: Colors.transparent,
             ),
-
-
           RaisedButton(
             onPressed: !cartManager.loading ? () async{
               if(Form.of(context).validate()){

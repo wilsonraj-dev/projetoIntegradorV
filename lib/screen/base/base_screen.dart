@@ -7,8 +7,13 @@ import 'package:projeto_pi_flutter/screen/home/home_screen.dart';
 import 'package:projeto_pi_flutter/screen/products/products_screen.dart';
 import 'package:provider/provider.dart';
 
-class BaseScreen extends StatelessWidget {
+class BaseScreen extends StatefulWidget {
 
+  @override
+  _BaseScreenState createState() => _BaseScreenState();
+}
+
+class _BaseScreenState extends State<BaseScreen> {
   final PageController pageController = PageController();
 
   @override

@@ -124,6 +124,7 @@ class CartManager extends ChangeNotifier{
   //ADDRESS
   Future<void> getAddress(String cep) async{
     loading = true;
+
     final cepAbertoService = CepAbertoService();
 
     try{
@@ -156,9 +157,9 @@ class CartManager extends ChangeNotifier{
     if(await calculateDelivery(address.latitude, address.longitude)){
       user.setAddress(address);
       loading = false;
-      notifyListeners();
     }
     else {
+      loading = false;
       return Future.error('Endereço fora do raio de entrega');
     }
   }
