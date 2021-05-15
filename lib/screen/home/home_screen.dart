@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/common/custom_drawer/custom_drawer.dart';
 import 'package:projeto_pi_flutter/model/home_manager.dart';
 import 'package:provider/provider.dart';
-
 import 'components/section_list.dart';
 import 'components/section_staggered.dart';
 

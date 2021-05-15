@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/screen/address/address_screen.dart';
 import 'package:projeto_pi_flutter/screen/base/base_screen.dart';
 import 'package:projeto_pi_flutter/screen/cart/cart_screen.dart';
+import 'package:projeto_pi_flutter/screen/checkout/checkout_screen.dart';
 import 'package:projeto_pi_flutter/screen/edit_product/edit_product_screen.dart';
 import 'package:projeto_pi_flutter/screen/login/login_screen.dart';
 import 'package:projeto_pi_flutter/screen/product/product_screen.dart';
@@ -80,13 +81,20 @@ class MyApp extends StatelessWidget {
             //Tela do carrinho
             case '/cart':
               return MaterialPageRoute(
-                builder: (_) => CartScreen()
+                builder: (_) => CartScreen(),
+                //settings: settings
               );
 
             //Tela do endereço
             case '/address':
               return MaterialPageRoute(
                 builder: (_) => AddressScreen()
+              );
+
+            //Tela de checkout
+            case '/checkout':
+              return MaterialPageRoute(
+                builder: (_) => CheckoutScreen()
               );
 
              //Tela de edição de produtos
@@ -97,10 +105,12 @@ class MyApp extends StatelessWidget {
                 )
               );
 
+            //Tela de início
             case '/base':
             default:
               return MaterialPageRoute(
-                builder: (_) => BaseScreen()
+                builder: (_) => BaseScreen(),
+                settings: settings,
               );
           }
         },

@@ -75,7 +75,7 @@ class CartManager extends ChangeNotifier{
     notifyListeners();
   }
 
-  //Removendo produtos
+  //Removendo produtos do carrinho
   void removeOfCart(CartProduct cartProduct){
     items.removeWhere((p) => p.id == cartProduct.id);
     user.cartRerefence.document(cartProduct.id).delete();
@@ -94,9 +94,7 @@ class CartManager extends ChangeNotifier{
         i--;
         continue;
       }
-
       productsPrice += cartProduct.totalPrice;
-
       _updateCartProduct(cartProduct);
     }
      notifyListeners();
@@ -109,6 +107,14 @@ class CartManager extends ChangeNotifier{
     }
   }
 
+  //Limpando o carrinho após o pedido
+  void clear(){
+    for(final cartProduct in items){
+      user.cartRerefence.document(cartProduct.id).delete();
+    }
+    items.clear();
+    notifyListeners();
+  }
 
   bool get isCartValid{
     for(final cartProduct in items){
@@ -121,12 +127,13 @@ class CartManager extends ChangeNotifier{
   bool get isAddressValid => address != null && deliveryPrice != null;
 
 
+
   //ADDRESS
+  //Obtendo endereço
   Future<void> getAddress(String cep) async{
     loading = true;
 
     final cepAbertoService = CepAbertoService();
-
     try{
       final cepAbertoAddress = await cepAbertoService.getAddressFromCep(cep);
 
@@ -150,6 +157,7 @@ class CartManager extends ChangeNotifier{
   }
 
 
+  //Pegando endereço do cliente
   Future<void> setAddress(Address address) async{
     loading = true;
     this.address = address;
@@ -164,12 +172,14 @@ class CartManager extends ChangeNotifier{
     }
   }
 
+  //Excluindo endereço
   void removeAddress(){
     address = null;
     deliveryPrice = null;
     notifyListeners();
   }
 
+  //Calculando taxa de entrega
   Future<bool> calculateDelivery(double lat, double long) async{
     final DocumentSnapshot doc = await firestore.document('aux/delivery').get();
 

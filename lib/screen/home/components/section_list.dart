@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/model/section.dart';
 import 'package:projeto_pi_flutter/screen/home/components/section_header.dart';
-
 import 'item_tile.dart';
 
 class SectionList extends StatelessWidget {

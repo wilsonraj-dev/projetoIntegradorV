@@ -12,8 +12,11 @@ class ItemSize{
 
   bool get hasStock => stock > 0;
 
-  @override
-  String toString() {
-    return 'ItemSize{name: $name, price: $price, stock: $stock}';
+  Map<String, dynamic> toMap(){
+    return {
+      'name': name,
+      'price': price,
+      'stock': stock,
+    };
   }
 }
