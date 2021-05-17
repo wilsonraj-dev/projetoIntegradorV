@@ -33,7 +33,6 @@ class _CepInputFieldState extends State<CepInputField> {
             decoration: const InputDecoration(
               isDense: true,
               labelText: 'CEP',
-              hintText: '12345-678'
             ),
             inputFormatters: [
               // ignore: deprecated_member_use

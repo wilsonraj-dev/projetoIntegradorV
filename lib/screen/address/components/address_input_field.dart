@@ -26,7 +26,6 @@ class AddressInputField extends StatelessWidget {
             decoration: const InputDecoration(
               isDense: true,
               labelText: 'Rua/Avenida',
-              hintText: 'Av. Brasil',
             ),
             validator: emptyValidator,
             onSaved: (t) => address.street = t,
@@ -40,7 +39,6 @@ class AddressInputField extends StatelessWidget {
                   decoration: const InputDecoration(
                     isDense: true,
                     labelText: 'Número',
-                    hintText: '123',
                   ),
                   inputFormatters: [
                     // ignore: deprecated_member_use
@@ -74,7 +72,6 @@ class AddressInputField extends StatelessWidget {
             decoration: const InputDecoration(
               isDense: true,
               labelText: 'Bairro',
-              hintText: 'Guanabara',
             ),
             validator: emptyValidator,
             onSaved: (t) => address.district = t,
@@ -89,7 +86,6 @@ class AddressInputField extends StatelessWidget {
                   decoration: const InputDecoration(
                     isDense: true,
                     labelText: 'Cidade',
-                    hintText: 'Campinas',
                   ),
                   validator: emptyValidator,
                   onSaved: (t) => address.city = t,
@@ -107,7 +103,6 @@ class AddressInputField extends StatelessWidget {
                   decoration: const InputDecoration(
                     isDense: true,
                     labelText: 'UF',
-                    hintText: 'SP',
                     counterText: '',
                   ),
                   maxLength: 2,

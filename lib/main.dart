@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_pi_flutter/model/ordersManager.dart';
 import 'package:projeto_pi_flutter/screen/address/address_screen.dart';
 import 'package:projeto_pi_flutter/screen/base/base_screen.dart';
 import 'package:projeto_pi_flutter/screen/cart/cart_screen.dart';
 import 'package:projeto_pi_flutter/screen/checkout/checkout_screen.dart';
+import 'package:projeto_pi_flutter/screen/confirmation/confirmation_screen.dart';
 import 'package:projeto_pi_flutter/screen/edit_product/edit_product_screen.dart';
 import 'package:projeto_pi_flutter/screen/login/login_screen.dart';
 import 'package:projeto_pi_flutter/screen/product/product_screen.dart';
@@ -13,6 +15,7 @@ import 'package:provider/provider.dart';
 import 'model/admin_users_managers.dart';
 import 'model/cart_manager.dart';
 import 'model/home_manager.dart';
+import 'model/order.dart';
 import 'model/product.dart';
 import 'model/product_manager.dart';
 import 'model/user_manager.dart';
@@ -35,6 +38,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProxyProvider<UserManager, CartManager>(create: (_) => CartManager(), lazy: false,
           update: (_, userManager, cartManager) => cartManager..updateUser(userManager),
         ),
+        ChangeNotifierProxyProvider<UserManager, OrderManager>(
+          create: (_) => OrderManager(),
+          lazy: false,
+          update: (_, userManager, ordersManager) =>
+            ordersManager..updateUser(userManager.user),
+        ),
+
         ChangeNotifierProxyProvider<UserManager, AdminUsersManager>(
           create: (_) => AdminUsersManager(),
           lazy: false,
@@ -102,6 +112,14 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (_) => EditProductScreen(
                   settings.arguments as Product
+                )
+              );
+
+              //Tela de confirmação do pedido
+            case '/confirmation':
+              return MaterialPageRoute(
+                builder: (_) => ConfirmationScreen(
+                  settings.arguments as Order
                 )
               );
 

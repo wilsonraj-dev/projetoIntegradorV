@@ -17,11 +17,6 @@ class CepAbertoAddress{
       bairro = map['bairro'] as String,
       cidade = Cidade.fromMap(map['cidade'] as Map<String, dynamic>),
       estado = Estado.fromMap(map['estado'] as Map<String, dynamic>);
-
-  @override
-  String toString() {
-    return 'CepAbertoAdrress{altitude: $altitude, cep: $cep, latitude: $latitude, longitude: $longitude, logradouro: $logradouro, bairro: $bairro, cidade: $cidade, estado: $estado}';
-  }
 }
 
 class Cidade {
@@ -33,11 +28,6 @@ class Cidade {
     ddd = map['ddd'] as int,
     ibge = map['ibge'] as String,
     nome = map['nome'] as String;
-
-  @override
-  String toString() {
-    return 'Cidade{ddd: $ddd, ibge: $ibge, nome: $nome}';
-  }
 }
 
 class Estado {
@@ -45,9 +35,4 @@ class Estado {
 
   Estado.fromMap(Map<String, dynamic> map) :
       sigla = map['sigla'] as String;
-
-  @override
-  String toString() {
-    return 'Estado{sigla: $sigla}';
-  }
 }

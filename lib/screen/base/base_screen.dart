@@ -4,6 +4,7 @@ import 'package:projeto_pi_flutter/model/page_manager.dart';
 import 'package:projeto_pi_flutter/model/user_manager.dart';
 import 'package:projeto_pi_flutter/screen/admin_users/admin_users_screen.dart';
 import 'package:projeto_pi_flutter/screen/home/home_screen.dart';
+import 'package:projeto_pi_flutter/screen/orders/orders_screen.dart';
 import 'package:projeto_pi_flutter/screen/products/products_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -28,12 +29,7 @@ class _BaseScreenState extends State<BaseScreen> {
             children: <Widget>[
               HomeScreen(),
               ProductsScreen(),
-              Scaffold(
-                drawer: CustomDrawer(),
-                appBar: AppBar(
-                  title: const Text("Home3")
-                ),
-              ),
+              OrdersScreen(),
               Scaffold(
                 drawer: CustomDrawer(),
                 appBar: AppBar(

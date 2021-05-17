@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/common/custom_drawer/price_card.dart';
 import 'package:projeto_pi_flutter/model/cart_manager.dart';
 import 'package:projeto_pi_flutter/model/checkout_model.dart';
+import 'package:projeto_pi_flutter/model/page_manager.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -59,8 +60,9 @@ class CheckoutScreen extends StatelessWidget {
                         );
                         //Navigator.of(context).popUntil((route) => route.settings.name == '/cart');
                       },
-                      onSuccess: (){
+                      onSuccess: (order){
                         Navigator.of(context).popUntil((route) => route.settings.name == '/base');
+                        Navigator.of(context).pushNamed('/confirmation', arguments: order);
                       }
                     );
                   },

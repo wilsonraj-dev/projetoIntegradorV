@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:projeto_pi_flutter/model/section.dart';
 import 'package:projeto_pi_flutter/screen/home/components/section_header.dart';
-
 import 'item_tile.dart';
 
 class SectionStaggered extends StatelessWidget {
@@ -28,7 +27,7 @@ class SectionStaggered extends StatelessWidget {
               return ItemTile(section.items[index]);
             },
             staggeredTileBuilder: (index) => StaggeredTile.count(
-                (index % 7 == 1) ? 2 : 1, (index % 7 == 3) ? 2 : 1
+                (index % 7 == 4) ? 2 : 1, (index % 7 == 3) ? 2 : 1
             ),
             mainAxisSpacing: 4,
             crossAxisSpacing: 4,

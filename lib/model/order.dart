@@ -11,6 +11,18 @@ class Order {
     address = cartManager.address;
   }
 
+  Order.fromDocument(DocumentSnapshot doc){
+    orderId = doc.documentID;
+
+    items = (doc.data['items'] as List<dynamic>).map((e){
+      return CartProduct.fromMap(e);
+    }).toList();
+    price = doc.data['price'] as num;
+    userId = doc.data['user'] as String;
+    address = Address.fromMap(doc.data['address'] as Map<String, dynamic>);
+    date = doc.data['date'] as Timestamp;
+  }
+
   final Firestore firestore = Firestore.instance;
 
   Future<void> save() async {
@@ -33,4 +45,5 @@ class Order {
 
   Timestamp date;
 
+  String get formattedId => '#${orderId.padLeft(6, '0')}';
 }
