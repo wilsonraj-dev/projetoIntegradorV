@@ -37,10 +37,10 @@ class OrderTile extends StatelessWidget {
               ],
             ),
             Text(
-              'Em trânsito',
+              order.statusText,
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: order.status == Status.canceled ? Colors.red : Colors.black,
                 fontSize: 14
               ),
             )
