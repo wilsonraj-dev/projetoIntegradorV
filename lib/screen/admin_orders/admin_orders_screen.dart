@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/common/custom_drawer/custom_drawer.dart';
 import 'package:projeto_pi_flutter/common/custom_drawer/empty_card.dart';
-import 'package:projeto_pi_flutter/common/custom_drawer/login_card.dart';
 import 'package:projeto_pi_flutter/common/order_tile.dart';
-import 'package:projeto_pi_flutter/model/ordersManager.dart';
+import 'package:projeto_pi_flutter/model/admin_orders_manager.dart';
 import 'package:provider/provider.dart';
 
-
-class OrdersScreen extends StatelessWidget {
+class AdminOrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,14 +14,11 @@ class OrdersScreen extends StatelessWidget {
         title: const Text('Meus pedidos'),
         centerTitle: true,
       ),
-      body: Consumer<OrderManager>(
+      body: Consumer<AdminOrdersManager>(
         builder: (_, ordersManager, __){
-          if(ordersManager.user == null){
-            return LoginCard();
-          }
           if(ordersManager.orders.isEmpty){
             return EmptyCard(
-              title: 'Nada encontrado',
+              title: 'Sem vendas realizadas!',
               iconData: Icons.border_clear,
             );
           }
@@ -31,7 +26,7 @@ class OrdersScreen extends StatelessWidget {
             itemCount: ordersManager.orders.length,
             itemBuilder: (_, index){
               return OrderTile(
-                ordersManager.orders.reversed.toList()[index]
+                  ordersManager.orders.reversed.toList()[index]
               );
             },
           );

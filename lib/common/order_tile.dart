@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/model/order.dart';
 
-import 'order_product_tile.dart';
+import '../screen/orders/components/order_product_tile.dart';
 
 class OrderTile extends StatelessWidget {
 

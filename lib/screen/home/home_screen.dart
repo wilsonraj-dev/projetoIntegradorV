@@ -37,11 +37,11 @@ class HomeScreen extends StatelessWidget {
                   centerTitle: true,
                 ),
                 actions: <Widget>[
-                  IconButton(
+                  /*IconButton(
                     icon: const Icon(Icons.shopping_cart),
                     color: Colors.white,
                     onPressed: () => Navigator.of(context).pushNamed('/cart')
-                  ),
+                  ),*/
                 ],
               ),
 

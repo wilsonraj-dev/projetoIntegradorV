@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/common/custom_drawer/price_card.dart';
 import 'package:projeto_pi_flutter/model/cart_manager.dart';
 import 'package:provider/provider.dart';
-
 import 'components/address_cart.dart';
 
 class AddressScreen extends StatelessWidget {

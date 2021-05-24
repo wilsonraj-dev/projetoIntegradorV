@@ -12,6 +12,7 @@ import 'package:projeto_pi_flutter/screen/signup/signup_screen.dart';
 import 'package:projeto_pi_flutter/services/cepaberto_service.dart';
 import 'package:provider/provider.dart';
 
+import 'model/admin_orders_manager.dart';
 import 'model/admin_users_managers.dart';
 import 'model/cart_manager.dart';
 import 'model/home_manager.dart';
@@ -50,6 +51,13 @@ class MyApp extends StatelessWidget {
           lazy: false,
           update: (_, userManager, adminUsersManagers) =>
               adminUsersManagers..updateUser(userManager),
+        ),
+
+        ChangeNotifierProxyProvider<UserManager, AdminOrdersManager>(
+          create: (_) => AdminOrdersManager(),
+          lazy: false,
+          update: (_, userManager, adminOrdersManagers) =>
+          adminOrdersManagers..updateAdmin(userManager.adminEnabled),
         )
     ],
 

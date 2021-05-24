@@ -16,20 +16,24 @@ class CustomDrawerHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             // ignore: prefer_const_literals_to_create_immutables
             children: <Widget>[
-              const Text(
-                'Projeto Integrador V',
-                style: TextStyle(
-                  fontSize: 34,
-                  fontWeight: FontWeight.bold,
-                ),
+              Row(
+                children: <Widget>[
+                  Image.asset('assets/images/logo.png'),
+                  Text('Projeto Integrador - V',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
+                    ),
+                  )
+                ],
               ),
-
               Text(
                 'Olá, ${userManager.user?.nome ?? ''}',
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -48,7 +52,7 @@ class CustomDrawerHeader extends StatelessWidget {
                       : 'Entre ou cadastre-se',
                   style: const TextStyle(
                     color: Colors.green,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
