@@ -3,7 +3,7 @@ import 'package:projeto_pi_flutter/model/address.dart';
 import 'package:projeto_pi_flutter/model/cart_manager.dart';
 import 'package:projeto_pi_flutter/model/cart_product.dart';
 
-enum Status {canceled, waiting, preparing, transporting, delivered}
+enum Status {canceled, preparing, transporting, delivered}
 
 class Order {
   Order.fromCartManager(CartManager cartManager){
@@ -11,7 +11,7 @@ class Order {
     price = cartManager.totalPrice;
     userId = cartManager.user.id;
     address = cartManager.address;
-    status = Status.waiting;
+    status = Status.preparing;
   }
 
   Order.fromDocument(DocumentSnapshot doc){
@@ -30,6 +30,12 @@ class Order {
 
   final Firestore firestore = Firestore.instance;
 
+  DocumentReference get firestoreRef => firestore.collection('orders').document(orderId);
+
+  void updateFromDocument(DocumentSnapshot doc){
+    status = Status.values[doc.data['status'] as int];
+  }
+
   Future<void> save() async {
     firestore.collection('orders').document(orderId).setData(
       {
@@ -44,11 +50,11 @@ class Order {
   }
 
   //Back
-  Function() get back {
-    return status.index >= Status.preparing.index ?
+  Function get back {
+    return status.index >= Status.transporting.index ?
       (){
         status = Status.values[status.index - 1];
-        firestore.collection('orders').document(orderId).updateData(
+        firestoreRef.updateData(
           {'status': status.index}
         );
       } : null;
@@ -56,13 +62,21 @@ class Order {
 
   //Advance
   Function() get advance {
-    return status.index >= Status.preparing.index ?
+    return status.index <= Status.transporting.index ?
       (){
-        status = Status.values[status.index - 1];
-        firestore.collection('orders').document(orderId).updateData(
+        status = Status.values[status.index + 1];
+        firestoreRef.updateData(
             {'status': status.index}
         );
       } : null;
+  }
+
+  //Cancelando pedido
+  void cancel(){
+    status = Status.canceled;
+    firestoreRef.updateData(
+      {'status': status.index}
+    );
   }
 
   String orderId;
@@ -82,8 +96,6 @@ class Order {
     switch(status){
       case Status.canceled:
         return 'Cancelado';
-      case Status.waiting:
-        return 'Em espera';
       case Status.preparing:
         return 'Em separação';
       case Status.transporting:

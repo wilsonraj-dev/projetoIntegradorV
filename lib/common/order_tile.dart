@@ -61,9 +61,7 @@ class OrderTile extends StatelessWidget {
                 children: <Widget>[
                   //Cancel
                   IconButton(
-                    onPressed: (){
-
-                    },
+                    onPressed: order.cancel,
                     icon: const Icon(Icons.cancel),
                     color: Colors.red,
                   ),
