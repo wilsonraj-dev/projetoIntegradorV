@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/common/cancel_order_dialog.dart';
+import 'package:projeto_pi_flutter/common/export_address_dialog.dart';
 import 'package:projeto_pi_flutter/model/order.dart';
 import 'package:projeto_pi_flutter/screen/orders/components/order_product_tile.dart';
 
@@ -93,7 +94,9 @@ class OrderTile extends StatelessWidget {
                   //Address
                   IconButton(
                     onPressed: (){
-
+                      showDialog(context: context,
+                          builder: (_) => ExportAddressDialog(order.address)
+                      );
                     },
                     icon: const Icon(Icons.map),
                     padding: EdgeInsets.fromLTRB(5, 0, 40, 0),
