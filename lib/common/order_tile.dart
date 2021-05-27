@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_pi_flutter/common/cancel_order_dialog.dart';
 import 'package:projeto_pi_flutter/model/order.dart';
 import 'package:projeto_pi_flutter/screen/orders/components/order_product_tile.dart';
 
@@ -56,20 +57,28 @@ class OrderTile extends StatelessWidget {
           if(showControls && order.status != Status.canceled)
             SizedBox(
               height: 50,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+              child: Row(
+                //scrollDirection: Axis.horizontal,
                 children: <Widget>[
                   //Cancel
-                  IconButton(
-                    onPressed: order.cancel,
-                    icon: const Icon(Icons.cancel),
-                    color: Colors.red,
+                  Expanded(
+                    child: IconButton(
+                      onPressed: (){
+                        showDialog(context: context,
+                          builder: (_) => CancelOrderDialog(order)
+                        );
+                      },
+                      icon: const Icon(Icons.cancel),
+                      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                      color: Colors.red,
+                    ),
                   ),
 
                   //Back
                   IconButton(
                     onPressed: order.back,
                     icon: const Icon(Icons.arrow_left),
+                    padding: EdgeInsets.fromLTRB(25, 0, 20, 0),
                     color: Colors.black,
                   ),
 
@@ -77,6 +86,7 @@ class OrderTile extends StatelessWidget {
                   IconButton(
                     onPressed: order.advance,
                     icon: const Icon(Icons.arrow_right),
+                    padding: EdgeInsets.fromLTRB(60, 0, 50, 0),
                     color: Colors.black,
                   ),
 
@@ -86,6 +96,7 @@ class OrderTile extends StatelessWidget {
 
                     },
                     icon: const Icon(Icons.map),
+                    padding: EdgeInsets.fromLTRB(5, 0, 40, 0),
                     color: Colors.green,
                   ),
                 ],
