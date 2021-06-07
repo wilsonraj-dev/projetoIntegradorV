@@ -72,8 +72,6 @@ class AdminOrdersScreen extends StatelessWidget {
                 )
               ],
             ),
-            minHeight: 40,
-            maxHeight: 240,
             panel: Column(
               children: <Widget>[
                 GestureDetector(
@@ -106,16 +104,21 @@ class AdminOrdersScreen extends StatelessWidget {
                       return CheckboxListTile(
                         title: Text(Order.getStatusText(e)),
                         dense: true,
-                        value: true,
+                        value: ordersManager.statusFilter.contains(e),
                         onChanged: (v){
-
+                          ordersManager.setStatusFilter(
+                            status: e,
+                            enabled: v
+                          );
                         },
                       );
                     }).toList(),
                   ),
-                )
+                ),
               ],
             ),
+            minHeight: 40,
+            maxHeight: 240,
           );
         },
       ),

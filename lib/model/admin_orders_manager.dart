@@ -7,10 +7,11 @@ import 'package:projeto_pi_flutter/model/user.dart';
 
 class AdminOrdersManager extends ChangeNotifier{
 
-  List<Order> _orders = [];
+  final List<Order> _orders = [];
   User userFilter;
 
   final Firestore firestore = Firestore.instance;
+  List<Status> statusFilter = [Status.preparing];
 
   StreamSubscription _subscription;
 
@@ -30,7 +31,7 @@ class AdminOrdersManager extends ChangeNotifier{
       output = output.where((o) => o.userId == userFilter.id).toList();
     }
 
-    return output;
+    return output = output.where((element) => statusFilter.contains(element.status)).toList();
   }
 
   void _listenToOrders(){
@@ -59,6 +60,15 @@ class AdminOrdersManager extends ChangeNotifier{
   //Filtrando pedido por usuário
   void setUserFilter(User user){
     userFilter = user;
+    notifyListeners();
+  }
+
+  void setStatusFilter({Status status, bool enabled}){
+    if(enabled) {
+      statusFilter.add(status);
+    } else {
+      statusFilter.remove(status);
+    }
     notifyListeners();
   }
 
