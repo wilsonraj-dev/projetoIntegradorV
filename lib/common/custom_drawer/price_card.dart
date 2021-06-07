@@ -71,6 +71,7 @@ class PriceCard extends StatelessWidget {
             ),
             const SizedBox(height: 8,),
             //
+            // ignore: deprecated_member_use
             RaisedButton(
               color: const Color.fromARGB(255, 12, 38, 30),
               disabledColor: Colors.blueGrey.withAlpha(100),

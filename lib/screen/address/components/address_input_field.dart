@@ -127,6 +127,7 @@ class AddressInputField extends StatelessWidget {
               backgroundColor: Colors.transparent,
             ),
 
+          // ignore: deprecated_member_use
           RaisedButton(
             color: Colors.green,
             textColor: Colors.white,
@@ -137,6 +138,7 @@ class AddressInputField extends StatelessWidget {
                   await context.read<CartManager>().setAddress(address);
                 }
                 catch(e){
+                  // ignore: deprecated_member_use
                   Scaffold.of(context).showSnackBar(
                     SnackBar(
                       content: Text('$e'),

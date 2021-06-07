@@ -20,6 +20,7 @@ class LoginScreen extends StatelessWidget {
         title: const Text("Entrar"),
         centerTitle: true,
         actions: <Widget>[
+          // ignore: deprecated_member_use
           FlatButton(
               onPressed: (){
                 Navigator.of(context).pushReplacementNamed('/signup');
@@ -73,6 +74,7 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(height: 16,), //aumenta o distaciamento entre "Esqueci minha senha" e o botão Entrar
                     SizedBox(
                       height: 44, //aumentando o tamanho do botão entrar
+                      // ignore: deprecated_member_use
                       child: RaisedButton(
                         onPressed: userManager.loading ? null : (){
                           if(formKey.currentState.validate()){ //Validando o botão entrar
@@ -82,6 +84,7 @@ class LoginScreen extends StatelessWidget {
                                 senha: senhaController.text
                               ),
                               onFail: (e){
+                                // ignore: deprecated_member_use
                                 scaffoldKey.currentState.showSnackBar(
                                     SnackBar(
                                       content: Text("Falha ao entrar: $e"),
@@ -117,6 +120,7 @@ class LoginScreen extends StatelessWidget {
               },
               child: Align(
                 alignment: Alignment.centerRight,
+                // ignore: deprecated_member_use
                 child: FlatButton(
                   onPressed: (){
                   },

@@ -115,6 +115,7 @@ class SignUpScreen extends StatelessWidget {
 
                     SizedBox(
                       height: 44,
+                      // ignore: deprecated_member_use
                       child: RaisedButton(
                         color: Theme.of(context).primaryColor,
                         disabledColor: Theme.of(context).primaryColor.withAlpha(100),
@@ -125,6 +126,7 @@ class SignUpScreen extends StatelessWidget {
 
                             //
                             if(user.senha != user.confirmarSenha){
+                              // ignore: deprecated_member_use
                               scaffoldKey.currentState.showSnackBar(
                                   const SnackBar(
                                     content: Text('Senhas não são iguais'),

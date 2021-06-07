@@ -12,6 +12,7 @@ class CancelOrderDialog extends StatelessWidget {
       title: Text('Cancelar ${order.formattedId}?'),
       content: const Text('Essa não escolha não poderá ser alterada!!!'),
       actions: <Widget>[
+        // ignore: deprecated_member_use
         FlatButton(
           onPressed: (){
             order.cancel();

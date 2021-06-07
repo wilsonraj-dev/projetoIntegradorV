@@ -131,6 +131,7 @@ class ProductScreen extends StatelessWidget {
                       builder: (_, userManager, product, __){
                         return SizedBox(
                           height: 44,
+                          // ignore: deprecated_member_use
                           child: RaisedButton(
                             onPressed: product.selectedSize != null ?(){
                               if(userManager.isLoggedIn){

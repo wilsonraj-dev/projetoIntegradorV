@@ -29,6 +29,7 @@ class LoginCard extends StatelessWidget {
                   ),
                 ),
               ),
+              // ignore: deprecated_member_use
               RaisedButton(
                 onPressed: (){
                   Navigator.of(context).pushNamed('/login');

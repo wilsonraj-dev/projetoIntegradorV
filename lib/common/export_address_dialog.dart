@@ -17,6 +17,7 @@ class ExportAddressDialog extends StatelessWidget {
         '${address.zipCode}',
       ),
       actions: <Widget>[
+        // ignore: deprecated_member_use
         FlatButton(
           onPressed: (){
             Navigator.of(context).pop();

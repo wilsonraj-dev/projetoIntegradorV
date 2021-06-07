@@ -54,12 +54,14 @@ class _CepInputFieldState extends State<CepInputField> {
               valueColor: AlwaysStoppedAnimation(Colors.green),
               backgroundColor: Colors.transparent,
             ),
+          // ignore: deprecated_member_use
           RaisedButton(
             onPressed: !cartManager.loading ? () async{
               if(Form.of(context).validate()){
                 try {
                   await context.read<CartManager>().getAddress(cepController.text);
                 } catch (e){
+                  // ignore: deprecated_member_use
                   Scaffold.of(context).showSnackBar(
                     SnackBar(
                       content: Text('$e'),

@@ -51,6 +51,7 @@ class CheckoutScreen extends StatelessWidget {
                   onPressed: (){
                     checkoutModel.checkout(
                       onStockFail: (e){
+                        // ignore: deprecated_member_use
                         scaffoldKey.currentState.showSnackBar(
                           SnackBar(
                             content: const Text('Sem estoque suficiente'),

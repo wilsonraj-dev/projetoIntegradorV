@@ -4,9 +4,14 @@ import 'package:projeto_pi_flutter/common/custom_drawer/custom_icon_button.dart'
 import 'package:projeto_pi_flutter/common/custom_drawer/empty_card.dart';
 import 'package:projeto_pi_flutter/common/order_tile.dart';
 import 'package:projeto_pi_flutter/model/admin_orders_manager.dart';
+import 'package:projeto_pi_flutter/model/order.dart';
 import 'package:provider/provider.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class AdminOrdersScreen extends StatelessWidget {
+
+  final PanelController panelController = PanelController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +23,9 @@ class AdminOrdersScreen extends StatelessWidget {
       body: Consumer<AdminOrdersManager>(
         builder: (_, ordersManager, __){
           final filteredOrders = ordersManager.filteredOrders;
-
-          return Column(
+          return SlidingUpPanel(
+            controller: panelController,
+            body: Column(
             children: <Widget>[
               if(ordersManager.userFilter != null)
                 Padding(
@@ -60,11 +66,56 @@ class AdminOrdersScreen extends StatelessWidget {
                       return OrderTile(
                         filteredOrders[index],
                         showControls: true,
-                    );
-                  },
-              ),
+                      );
+                    },
+                  ),
                 )
-            ],
+              ],
+            ),
+            minHeight: 40,
+            maxHeight: 240,
+            panel: Column(
+              children: <Widget>[
+                GestureDetector(
+                  onTap: (){
+                    if(panelController.isPanelClosed){
+                      panelController.open();
+                    } else {
+                      panelController.close();
+                    }
+                  },
+                  child: Container(
+                    height: 40,
+                    color: Colors.white,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Filtros',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: Status.values.map((e){
+                      // ignore: missing_required_param
+                      return CheckboxListTile(
+                        title: Text(Order.getStatusText(e)),
+                        dense: true,
+                        value: true,
+                        onChanged: (v){
+
+                        },
+                      );
+                    }).toList(),
+                  ),
+                )
+              ],
+            ),
           );
         },
       ),
