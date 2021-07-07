@@ -29,7 +29,8 @@ class ProductScreen extends StatelessWidget {
                     icon: const Icon(Icons.edit),
                     onPressed: (){
                       Navigator.of(context).pushReplacementNamed('/edit_product',
-                          arguments: product);
+                          arguments: product
+                        );
                     },
                   );
                 } else {

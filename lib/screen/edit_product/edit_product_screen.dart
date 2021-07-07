@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/model/product.dart';
+import 'package:projeto_pi_flutter/screen/edit_product/components/images_form.dart';
 
 class EditProductScreen extends StatelessWidget {
 
@@ -13,21 +14,10 @@ class EditProductScreen extends StatelessWidget {
         title: const Text("Editar Produtos"),
         centerTitle: true,
       ),
-      // ignore: avoid_unnecessary_containers
-      body: Padding(
-        padding: const EdgeInsets.all(30),
-        child: ListView(
-          children: const <Widget>[
-            Text(
-              'Olá a todos vocês',
-              style: TextStyle(
-                fontSize: 50,
-                fontWeight: FontWeight.w200,
-                color: Colors.indigo,
-              ),
-            )
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          ImagesForm(product),
+        ],
       ),
     );
   }

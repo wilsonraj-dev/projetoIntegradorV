@@ -10,7 +10,7 @@ class CancelOrderDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text('Cancelar ${order.formattedId}?'),
-      content: const Text('Essa não escolha não poderá ser alterada!!!'),
+      content: const Text('Essa escolha não poderá ser alterada!!!'),
       actions: <Widget>[
         // ignore: deprecated_member_use
         FlatButton(

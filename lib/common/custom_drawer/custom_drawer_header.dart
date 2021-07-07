@@ -19,13 +19,6 @@ class CustomDrawerHeader extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Image.asset('assets/images/logo.png'),
-                  Text('Projeto Integrador - V',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15
-                    ),
-                  )
                 ],
               ),
               Text(

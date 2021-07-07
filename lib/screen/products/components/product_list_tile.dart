@@ -45,18 +45,11 @@ class ProductListTile extends StatelessWidget {
                     //
                     const Padding(
                       padding: EdgeInsets.only(top: 4),
-                      child: Text(
-                        'Com preços de',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14
-                        ),
-                      ),
                     ),
-
+                    
                     //Preço
                     Text(
-                      'R\$2000.00',
+                      product.description,
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w800,
