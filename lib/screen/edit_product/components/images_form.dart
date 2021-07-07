@@ -1,8 +1,10 @@
 import 'dart:io';
-
 import 'package:carousel_pro/carousel_pro.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/model/product.dart';
+
+import 'image_source_sheet.dart';
 
 class ImagesForm extends StatelessWidget {
 
@@ -17,7 +19,7 @@ class ImagesForm extends StatelessWidget {
         return AspectRatio(
           aspectRatio: 1,
           child: Carousel(
-            images: state.value.map((image){
+            images: state.value.map<Widget>((image){
               return Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
@@ -38,7 +40,30 @@ class ImagesForm extends StatelessWidget {
                   )
                 ],
               );
-            }).toList(),
+            }).toList()..add(
+              Material(
+                color: Colors.grey[100],
+                child: IconButton(
+                  icon: Icon(Icons.add_a_photo),
+                  color: Colors.green,
+                  iconSize: 50,
+                  onPressed: () {
+                    if(Platform.isAndroid){
+                        showModalBottomSheet(
+                        context: context,
+                        builder: (_) => ImageSourceSheet(),
+                      );
+                    }
+                    else {
+                      showCupertinoModalPopup(
+                        context: context,
+                        builder: (_) => ImageSourceSheet(),
+                      );
+                    }
+                  }
+                ),
+              ),
+            ),
             dotSize: 3,
             dotSpacing: 15,
             dotBgColor: Colors.transparent,
