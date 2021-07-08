@@ -3,7 +3,6 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/model/product.dart';
-
 import 'image_source_sheet.dart';
 
 class ImagesForm extends StatelessWidget {
@@ -14,8 +13,13 @@ class ImagesForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormField<List<dynamic>>(
-      initialValue: product.images,
+      initialValue: List.from(product.images),
       builder: (state){
+        void onImageSelected(File file) {
+          state.value.add(file);
+          state.didChange(state.value);
+          Navigator.of(context).pop();
+        }
         return AspectRatio(
           aspectRatio: 1,
           child: Carousel(
@@ -51,13 +55,17 @@ class ImagesForm extends StatelessWidget {
                     if(Platform.isAndroid){
                         showModalBottomSheet(
                         context: context,
-                        builder: (_) => ImageSourceSheet(),
+                        builder: (_) => ImageSourceSheet(
+                          onImageSelected: onImageSelected,
+                        ),
                       );
                     }
                     else {
                       showCupertinoModalPopup(
                         context: context,
-                        builder: (_) => ImageSourceSheet(),
+                        builder: (_) => ImageSourceSheet(
+                          onImageSelected: onImageSelected,
+                        ),
                       );
                     }
                   }
