@@ -37,8 +37,17 @@ class Product extends ChangeNotifier{
     return stock;
   }
 
-  bool get hasStock{
+  bool get hasStock {
     return totalStock > 0;
+  }
+
+  num get basePrice {
+    num lowest = double.infinity;
+    for(final size in sizes) {
+      if(size.price < lowest && size.hasStock)
+        lowest = size.price;
+    }
+    return lowest;
   }
 
   ItemSize findSize(String name){

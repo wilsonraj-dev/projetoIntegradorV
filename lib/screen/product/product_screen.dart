@@ -70,8 +70,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                   ),
                   //
-
-                  /*const Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8),
                     child: Text(
                       'A partir de',
@@ -81,9 +80,16 @@ class ProductScreen extends StatelessWidget {
                         fontSize: 16
                       ),
                     ),
-                  ),*/
-
-
+                  ),
+                  //
+                  Text(
+                    'R\$ ${product.basePrice.toStringAsFixed(2)}',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black
+                    ),
+                  ),
                   //
                   const Padding(
                     padding: EdgeInsets.only(top: 16, bottom: 8),
