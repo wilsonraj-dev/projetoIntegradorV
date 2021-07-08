@@ -4,8 +4,9 @@ import 'package:projeto_pi_flutter/screen/edit_product/components/images_form.da
 
 class EditProductScreen extends StatelessWidget {
 
-  const EditProductScreen(this.product);
+  EditProductScreen(this.product);
   final Product product;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +15,23 @@ class EditProductScreen extends StatelessWidget {
         title: const Text("Editar Produtos"),
         centerTitle: true,
       ),
-      body: ListView(
-        children: <Widget>[
-          ImagesForm(product),
-        ],
+      backgroundColor: Colors.white,
+      body: Form(
+        key: formKey,
+        child: ListView(
+          children: <Widget>[
+            ImagesForm(product),
+            // ignore: deprecated_member_use
+            RaisedButton(
+              onPressed: () {
+                if(formKey.currentState.validate()){
+                  print('Válido');
+                }
+              },
+              child: const Text('Salvar'),
+            )
+          ],
+        ),
       ),
     );
   }
