@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:projeto_pi_flutter/model/product.dart';
 import 'package:projeto_pi_flutter/screen/edit_product/components/images_form.dart';
 
+import 'components/sizes_form.dart';
+
 class EditProductScreen extends StatelessWidget {
 
   EditProductScreen(this.product);
@@ -86,6 +88,9 @@ class EditProductScreen extends StatelessWidget {
                 return null;
               },
             ),
+
+            //
+            SizesForm(product),
             // ignore: deprecated_member_use
             RaisedButton(
               onPressed: () {
