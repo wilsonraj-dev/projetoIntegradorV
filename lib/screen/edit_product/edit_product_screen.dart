@@ -49,6 +49,7 @@ class EditProductScreen extends StatelessWidget {
                         onSaved: (name) => product.name = name,
                       ),
                       //
+                      
                       Padding(
                         padding: const EdgeInsets.only(top: 4),
                         child: Text(
@@ -60,6 +61,7 @@ class EditProductScreen extends StatelessWidget {
                         ),
                       ),
                       //
+
                       Text(
                         'R\$ ...',
                         style: TextStyle(
@@ -69,6 +71,7 @@ class EditProductScreen extends StatelessWidget {
                         ),
                       ),
                       //
+
                       Padding(
                         padding: const EdgeInsets.only(top: 16, bottom: 8),
                         child: Text(
@@ -79,6 +82,7 @@ class EditProductScreen extends StatelessWidget {
                         ),
                       ),
                       //
+
                       TextFormField(
                         initialValue: product.description,
                         style: const TextStyle(
@@ -97,6 +101,7 @@ class EditProductScreen extends StatelessWidget {
                         onSaved: (desc) => product.description = desc,
                       ),
                       //
+
                       SizesForm(product),
                       const SizedBox(height: 20,),
                       SizedBox(
@@ -106,7 +111,7 @@ class EditProductScreen extends StatelessWidget {
                           onPressed: () {
                             if(formKey.currentState.validate()){
                               formKey.currentState.save();
-                              print('Válido');
+                              product.save();
                             }
                           },
                           textColor: Colors.white,
