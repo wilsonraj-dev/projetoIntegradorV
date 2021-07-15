@@ -36,6 +36,13 @@ class Product extends ChangeNotifier{
 
   List<dynamic> newImages;
 
+  bool _loading = false;
+  bool get loading => _loading;
+  set loading(bool value) {
+    _loading = value;
+    notifyListeners();
+  }
+
   ItemSize _selectedSize;
   ItemSize get selectedSize => _selectedSize;
   set selectedSize(ItemSize value){
@@ -50,10 +57,12 @@ class Product extends ChangeNotifier{
     }
     return stock;
   }
+  //
 
   bool get hasStock {
     return totalStock > 0;
   }
+  //
 
   num get basePrice {
     num lowest = double.infinity;
@@ -80,6 +89,8 @@ class Product extends ChangeNotifier{
   //
 
   Future<void> save() async {
+    loading = true;
+
     final Map<String, dynamic> data = {
       'name': name,
       'description': description,
@@ -118,6 +129,9 @@ class Product extends ChangeNotifier{
     }
 
     await firestoreRef.updateData({'images': updatedImages});
+    images = updatedImages;
+
+    loading = false;
   }
   //
 
